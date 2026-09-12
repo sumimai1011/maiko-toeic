@@ -8,6 +8,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="麻衣子TOEIC対策">
 <title>麻衣子TOEIC対策</title>
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" type="image/png" href="icon.png">
+
 <style>
 :root{--bg:#fffaf8;--ink:#232333;--muted:#8b8791;--line:#eee8e5;--pink:#ff6f91;--purple:#8872e8;--blue:#65a1ff;--green:#57b98c;--yellow:#f3bd4c}
 *{box-sizing:border-box}
@@ -186,16 +189,348 @@ button{min-height:48px;-webkit-tap-highlight-color:transparent}
   .sameFormMeaning b{display:block;margin:0 0 2px;color:var(--purple)}
 }
 
+
+
+/* v57: スマホUIを実機操作向けに再配置 */
+.logo{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:.055em;
+  color:#7e72b8;
+}
+.logo .logoMaiko{color:#7e72b8;font-weight:800}
+.logo b{color:var(--pink);font-weight:950;letter-spacing:.025em}
+
+@media(max-width:640px){
+  .wrap{
+    min-height:100svh;
+    padding-top:max(14px,env(safe-area-inset-top));
+    padding-bottom:max(20px,env(safe-area-inset-bottom));
+  }
+
+  /* HOME: 上に固まりすぎないよう、画面全体で縦に配分 */
+  .home:not(.off){
+    min-height:calc(100svh - max(34px,env(safe-area-inset-bottom)));
+    display:flex;
+    flex-direction:column;
+  }
+  header{
+    min-height:42px;
+    margin-bottom:10px;
+    padding:0 3px;
+  }
+  .logo{font-size:19px}
+  header .small{font-size:12px;color:#9b929b}
+
+  .hero{
+    min-height:56svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    padding:28px 18px 19px;
+    border-radius:23px;
+  }
+  .kicker{
+    font-size:18px;
+    line-height:1.35;
+    letter-spacing:.02em;
+    margin-top:2px;
+  }
+  .count{
+    font-size:66px;
+    margin:12px 0 0;
+  }
+  .primary{
+    margin-top:auto;
+    min-height:62px;
+    padding:17px 12px;
+    border-radius:18px;
+    font-size:19px;
+    letter-spacing:.02em;
+    box-shadow:0 9px 22px rgba(101,130,235,.18);
+  }
+  .hero .note{
+    margin-top:12px;
+    font-size:12px;
+  }
+  .menu{
+    margin-top:14px;
+    gap:10px;
+  }
+  .menu button{
+    min-height:62px;
+    padding:14px 7px;
+    border-radius:17px;
+    font-size:17px;
+  }
+
+  /* STUDY: 1画面の中で上下のバランスを取り、評価ボタンを親指位置へ */
+  .study.on{
+    min-height:calc(100svh - max(34px,env(safe-area-inset-bottom)));
+  }
+  .studybar{
+    min-height:54px;
+    margin-bottom:8px;
+    padding:4px 0 7px;
+  }
+  .back{
+    min-height:48px;
+    padding:10px 14px;
+    font-size:16px;
+  }
+  .card{
+    min-height:calc(100svh - 102px - env(safe-area-inset-bottom));
+    padding:38px 16px 24px;
+    border-radius:24px;
+    justify-content:flex-start;
+  }
+  .front{
+    font-size:clamp(38px,11.5vw,54px);
+    min-height:72px;
+    margin:8px 0 7px;
+    color:#292a3c;
+  }
+  .pron{
+    padding-bottom:10px;
+  }
+  .answerRow,
+  .card.reveal .answerRow{
+    width:100%;
+    padding:0 8px !important;
+    margin-top:0 !important;
+    min-height:0;
+    position:static;
+  }
+  .answer,
+  .card.reveal .answer{
+    margin:0 !important;
+    padding:0 4px !important;
+  }
+  .card.reveal .am{
+    font-size:27px !important;
+    line-height:1.35;
+    transform:translateY(13px) !important;
+    color:#292a3c;
+  }
+  .card.reveal .memoimg{
+    margin-top:28px !important;
+    max-height:190px;
+  }
+  .ex.noteExample{margin-top:15px !important}
+
+  .rates,
+  .rates.on{
+    position:absolute;
+    left:18px;
+    right:18px;
+    top:58%;
+    transform:none;
+    width:auto;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:0;
+    z-index:4;
+  }
+  .rates button{
+    min-height:62px;
+    padding:13px 8px;
+    border-radius:18px;
+    font-size:16px;
+    letter-spacing:.01em;
+    box-shadow:0 7px 18px rgba(40,35,60,.07);
+  }
+  .rates .r1{order:1}
+  .rates .r3{order:2}
+}
+
+@media(max-width:390px){
+  .logo{font-size:18px}
+  .hero{min-height:55svh;padding-top:25px}
+  .kicker{font-size:17px}
+  .count{font-size:62px}
+  .primary{min-height:60px;font-size:18px}
+  .menu button{min-height:59px;font-size:16px}
+  .card{padding-top:34px}
+  .rates,.rates.on{left:14px;right:14px;gap:10px;top:58%}
+  .rates button{min-height:60px;font-size:15px}
+}
+
+
+/* v58: スマホのホームと学習カードをさらに親指操作向けに調整 */
+.studyArt{display:none}
+
+@media(max-width:640px){
+  .logo{letter-spacing:.025em}
+  .logo .logoMaiko{font-weight:850;letter-spacing:.01em}
+  .logo b{letter-spacing:.015em}
+
+  .hero{
+    min-height:0;
+    height:auto;
+    padding:28px 18px 22px;
+  }
+  .count{margin:10px 0 0}
+
+  .studyArt{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    margin:7px auto 4px;
+    color:#8a78e8;
+  }
+  .studyArt svg{
+    width:108px;
+    height:50px;
+    overflow:visible;
+    filter:drop-shadow(0 6px 10px rgba(126,114,184,.08));
+  }
+  .studyCue{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    line-height:1;
+    transform:translateY(1px);
+  }
+  .studyCue b{
+    font-size:12px;
+    letter-spacing:.12em;
+    color:#7e72b8;
+  }
+  .studyCue span{
+    margin-top:5px;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:.18em;
+    color:#d77391;
+  }
+  .primary{
+    margin-top:13px;
+    min-height:62px;
+  }
+  .hero .note{margin-top:11px}
+  .menu{margin-top:13px}
+
+  /* 評価ボタンは絶対配置をやめ、内容の下に自然に流す。画像があっても重ならない。 */
+  .card{
+    padding-bottom:28px;
+  }
+  .card.reveal .answerRow{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .rates,
+  .rates.on{
+    position:static !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    width:100% !important;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    transform:none !important;
+  }
+  .card.reveal:not(.hasImage) .rates.on{
+    margin-top:clamp(64px,12svh,92px) !important;
+  }
+  .card.reveal.hasImage .rates.on{
+    margin-top:22px !important;
+  }
+  .rates button{
+    min-height:66px;
+    font-size:16px;
+    border-radius:19px;
+  }
+}
+
+@media(max-width:390px){
+  .hero{padding-top:24px;padding-bottom:20px}
+  .studyArt{margin-top:4px}
+  .studyArt svg{width:98px;height:46px}
+  .primary{margin-top:10px}
+  .card.reveal:not(.hasImage) .rates.on{margin-top:58px !important}
+  .card.reveal.hasImage .rates.on{margin-top:18px !important}
+  .rates button{min-height:64px;font-size:15px}
+}
+
+
+/* v61: 評価ボタンを全カード共通でさらに下へ固定 */
+@media(max-width:640px){
+  .logo{font-size:21px !important;}
+
+  /* 「まだ／覚えた」はカード内容に関係なく同じ位置。
+     語呂画像の下あたりになる高さに、全カード共通で固定する。 */
+  .card{position:relative;}
+  .rates,
+  .rates.on,
+  .card.reveal:not(.hasImage) .rates.on,
+  .card.reveal.hasImage .rates.on{
+    position:absolute !important;
+    left:18px !important;
+    right:18px !important;
+    top:82% !important;
+    width:auto !important;
+    margin:0 !important;
+    transform:none !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:12px !important;
+    z-index:4;
+  }
+}
+
+@media(max-width:390px){
+  .logo{font-size:20px !important;}
+  .rates,
+  .rates.on,
+  .card.reveal:not(.hasImage) .rates.on,
+  .card.reveal.hasImage .rates.on{
+    left:14px !important;
+    right:14px !important;
+    top:82% !important;
+    gap:10px !important;
+  }
+}
+
+
+/* v62: 長い英語・熟語がスマホ幅で切れないように自動調整 */
+@media(max-width:640px){
+  .front{
+    max-width:100%;
+    box-sizing:border-box;
+    text-align:center;
+  }
+}
+
 </style>
 </head>
 <body>
 <div class="wrap">
 <main id="home" class="home">
-<header><div class="logo">麻衣子<b>TOEIC対策</b></div><div class="small" id="dateLabel"></div></header>
+<header><div class="logo"><span class="logoMaiko">Maiko</span><b> TOEIC</b></div><div class="small" id="dateLabel"></div></header>
 <div class="hero">
   <div class="kicker">今日の復習</div>
   <div class="count" id="dueCount">0</div>
-  
+  <div class="studyArt" aria-hidden="true">
+    <svg viewBox="0 0 160 72" role="img">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M35 20c14-5 28-3 43 5v34c-15-8-29-10-43-5z"/>
+        <path d="M125 20c-14-5-28-3-43 5v34c15-8 29-10 43-5z"/>
+        <path d="M80 27v31"/>
+        <path d="M49 31c8-2 15-1 22 2M49 40c8-2 15-1 22 2" opacity=".65"/>
+        <path d="M111 31c-8-2-15-1-22 2M111 40c-8-2-15-1-22 2" opacity=".65"/>
+      </g>
+      <g fill="currentColor">
+        <path d="M23 17l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/>
+        <path d="M137 8l2 4.5 4.5 2-4.5 2-2 4.5-2-4.5-4.5-2 4.5-2z" opacity=".75"/>
+        <circle cx="137" cy="48" r="3" opacity=".55"/>
+      </g>
+    </svg>
+    <div class="studyCue"><b>10 MIN</b><span>FOCUS</span></div>
+  </div>
   <button id="start" class="primary">学習スタート</button>
   <div class="note"><span id="registered">0</span>カード登録済み</div>
 </div>
@@ -545,19 +880,40 @@ function startStudy(arr){
 }
 function fitFrontText(){
   const el=$("front");
-  const textLen=(el.textContent||"").length;
-  let size=56;
-  if(textLen>28) size=34;
-  else if(textLen>22) size=38;
-  else if(textLen>17) size=44;
-  else if(textLen>12) size=50;
+  const text=(el.textContent||"").trim();
+  const textLen=text.length;
+
+  // 毎カード初期化。短い語は大きく、長い熟語は無理に大きくしない。
+  el.style.whiteSpace="nowrap";
+  el.style.overflow="hidden";
+  el.style.lineHeight="1.08";
+  el.style.paddingLeft="6px";
+  el.style.paddingRight="6px";
+  el.style.minHeight="72px";
+
+  let size=54;
+  if(textLen>30) size=26;
+  else if(textLen>24) size=28;
+  else if(textLen>19) size=31;
+  else if(textLen>15) size=38;
+  else if(textLen>11) size=46;
   el.style.fontSize=size+"px";
-  // 実際にはみ出す場合はさらに少しずつ縮小
+
+  // 実寸を見ながら、1行で収まるところまで自動で縮小。
   let guard=0;
-  while(el.scrollWidth>el.clientWidth && size>28 && guard<20){
-    size-=2;
+  while(el.scrollWidth>el.clientWidth && size>22 && guard<30){
+    size-=1;
     el.style.fontSize=size+"px";
     guard++;
+  }
+
+  // かなり長い表現だけは、読みにくい極小文字にせず2行まで許可。
+  if(el.scrollWidth>el.clientWidth){
+    el.style.whiteSpace="normal";
+    el.style.overflow="visible";
+    el.style.fontSize="24px";
+    el.style.lineHeight="1.2";
+    el.style.minHeight="82px";
   }
 }
 
@@ -575,6 +931,7 @@ function showCard(){
   const img=$("memoimg");
   if(x.image){img.src=x.image;img.style.display="block"}
   else{img.removeAttribute("src");img.style.display="none"}
+  $("card").classList.toggle("hasImage", !!x.image);
   $("card").classList.remove("reveal");
   $("rates").classList.remove("on");
 }
