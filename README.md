@@ -1,8 +1,15 @@
 # Maiko TOEIC 更新手順
 
-1. GitHubで **Add file → Upload files**
-2. 最新のHTMLを **index.html** でアップロード
-3. **Commit changes**
-4. iPhoneの古いMaiko TOEICアイコンを削除
-5. SafariでMaiko TOEICを開き、最新版になったか確認
-6. **共有 → ホーム画面に追加**
+1. Codexに「Maiko TOEICアプリを更新して」と依頼し、追加したい英単語・表現の画像を添付する
+2. 文字や意味が曖昧な箇所について質問された場合は、正しい内容を回答する
+3. 更新完了の報告を待つ
+4. iPhoneでMaiko TOEICを一度終了し、ホーム画面のアイコンから開き直す
+5. 「カード登録済み」の枚数や追加したカードを確認する
+
+## 更新が表示されない場合
+
+通常、ホーム画面のアイコンを削除して追加し直す必要はありません。
+
+1. アプリを完全に終了して開き直す
+2. Safariで[Maiko TOEIC](https://sumimai1011.github.io/maiko-toeic/)を開き、ページを再読み込みする
+3. それでも更新されない場合のみ、ホーム画面の古いアイコンを削除し、Safariの **共有 → ホーム画面に追加** を実行する
