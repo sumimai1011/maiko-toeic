@@ -176,8 +176,8 @@ renderList=function(){
 };
 """
  script=script.replace("__MIGRATIONS__",json.dumps(approved,ensure_ascii=False))
- assert src.count("\nrenderHome();\n</script>")==1, "Unexpected startup location"
- src=src.replace("\nrenderHome();\n</script>","\n"+script+"\nrenderHome();\n</script>",1)
+ assert src.count("\n</script>\n")==1, "Unexpected script location"
+ src=src.replace("\n</script>\n","\n"+script+"\nrenderHome();\n</script>\n",1)
  assert "function renderList()" in src and "function allStoredCards()" in src
  path.write_text(src,encoding="utf-8")
  print("Installed editable & reversible card management UI.")
