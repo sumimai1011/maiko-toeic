@@ -1,53 +1,40 @@
 #!/usr/bin/env python3
-"""Fix blank 0-card screen caused by stale since/s361 startup override."""
+"""Fix 0-card startup error referencing since/s361 after its authorized removal."""
 from pathlib import Path
-import json,re,subprocess
+import json
+import re
+import subprocess
+
 path=Path("index.html")
 src=path.read_text(encoding="utf-8")
-assert src.count("const BASE=")==1
+assert src.count("const BASE=")==1 and src.count("BASE.push(")==1
 p=src.index("const BASE=")+len("const BASE=")
-base,used=json.JSONDecoder().raw_decode(src[p:])
+base,consumed=json.JSONDecoder().raw_decode(src[p:])
 a=src.index("BASE.push(")+len("BASE.push(")
-b=src.index("\n);",a)
+b=src.index("\\n);",a)
 extra=json.loads("["+src[a:b].strip().strip(",")+"]")
-assert len(base)==197 and len(extra)==163 and len(base)+len(extra)==360
+assert (len(base),len(extra))==(197,163), (len(base),len(extra))
 ids={c["id"] for c in base+extra}
-assert "s361" not in ids, "since must remain deleted"
-assert "s167" in ids and "s204" in ids
-src,count=re.subn(r'^Object\.assign\(BASE\.find\(x=>x\.id==="s361"\),\{.*\}\);
-# Catch any other deleted-card startup overrides, not just since.
-startup_ids=re.findall(r'Object\.assign\(BASE\.find\(x=>x\.id==="([^"]+)"\)',src)
-assert all(x in ids for x in startup_ids), ("Stale overrides left",startup_ids)
-assert len(startup_ids)==2 and set(startup_ids)=={"s167","s204"}
-assert src.count('id="exportCards"')==0 and "cardEditLayer" not in src
+assert "s361" not in ids and "s167" in ids and "s204" in ids
+
+# The deleted since card must not be accessed by the startup overrides.
+lines=src.splitlines(keepends=True)
+matches=[i for i,line in enumerate(lines) if line.startswith('Object.assign(BASE.find(x=>x.id==="s361"),')]
+assert len(matches)==1, matches
+lines[matches[0]]="// Deleted s361 has no startup override.\n"
+src="".join(lines)
+startup_ids=re.findall(r'Object\\.assign\\(BASE\\.find\\(x=>x\\.id==="([^"]+)"\\)',src)
+assert set(startup_ids)=={"s167","s204"}, startup_ids
+assert all(x in ids for x in startup_ids)
+assert "preserveMergedCardProgress" in src
 assert src.rstrip().endswith("</html>")
-# Syntax check the actual inline script before writing.
-matches=re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>",src,re.S|re.I)
-assert len(matches)==1
-jsfile=Path("/tmp/toeic_after_repair.js")
-jsfile.write_text(matches[0],encoding="utf-8")
-r=subprocess.run(["node","--check",str(jsfile)],capture_output=True,text=True)
-assert r.returncode==0, r.stderr[-2500:]
+
+scripts=re.findall(r"<script(?:\\s[^>]*)?>(.*?)</script>",src,re.S|re.I)
+assert len(scripts)==1, len(scripts)
+js=Path("/tmp/toeic_repair_check.js")
+js.write_text(scripts[0],encoding="utf-8")
+res=subprocess.run(["node","--check",str(js)],capture_output=True,text=True)
+assert res.returncode==0,res.stderr
 path.write_text(src,encoding="utf-8")
-print("Repaired stale s361 startup override; JavaScript syntax validation PASSED")
-print("Validated 197 + 163 = 360 cards, all remaining overrides refer to existing IDs.")
-print("No card records, images, or browser progress altered.")
-, '// s361 since card was removed by request; no startup override needed.',src,flags=re.M)
-assert count==1, ('Unexpected count of stale since override',count)
-# Catch any other deleted-card startup overrides, not just since.
-startup_ids=re.findall(r'Object\.assign\(BASE\.find\(x=>x\.id==="([^"]+)"\)',src)
-assert all(x in ids for x in startup_ids), ("Stale overrides left",startup_ids)
-assert len(startup_ids)==2 and set(startup_ids)=={"s167","s204"}
-assert src.count('id="exportCards"')==0 and "cardEditLayer" not in src
-assert src.rstrip().endswith("</html>")
-# Syntax check the actual inline script before writing.
-matches=re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>",src,re.S|re.I)
-assert len(matches)==1
-jsfile=Path("/tmp/toeic_after_repair.js")
-jsfile.write_text(matches[0],encoding="utf-8")
-r=subprocess.run(["node","--check",str(jsfile)],capture_output=True,text=True)
-assert r.returncode==0, r.stderr[-2500:]
-path.write_text(src,encoding="utf-8")
-print("Repaired stale s361 startup override; JavaScript syntax validation PASSED")
-print("Validated 197 + 163 = 360 cards, all remaining overrides refer to existing IDs.")
-print("No card records, images, or browser progress altered.")
+print("Fixed stale since/s361 startup override. JavaScript syntax PASSED.")
+print("Card total: 197 + 163 = 360. Other cards/images/progress preserved.")
