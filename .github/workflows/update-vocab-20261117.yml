@@ -6,6 +6,7 @@ on:
       - 'scripts/update_vocab_20261117.py'
       - '.github/workflows/update-vocab-20261117.yml'
       - 'scripts/card_editor_20261117.py'
+      - 'scripts/consolidate_402.py'
   workflow_dispatch:
 
 permissions:
@@ -22,6 +23,8 @@ jobs:
         run: python3 scripts/update_vocab_20261117.py
       - name: Add reversible card editing and approved meaning revisions
         run: python3 scripts/card_editor_20261117.py
+      - name: Consolidate full 402-card deck and simplify interface
+        run: python3 scripts/consolidate_402.py
       - name: Commit updated index.html
         run: |
           if git diff --quiet -- index.html; then
@@ -31,5 +34,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Add TOEIC card editor and approved meaning revisions"
+          git commit -m "Unify 402 TOEIC cards and remove edit delete export UI"
           git push
