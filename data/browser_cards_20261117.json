@@ -1,0 +1,1020 @@
+{
+  "sourceCount": 402,
+  "exportedAt": "2026-11-17T05:11:21.623Z",
+  "cards": [
+    {
+      "type": "熟語",
+      "front": "in light of ～",
+      "meaning": "～を考慮して、～に照らして",
+      "id": "s371"
+    },
+    {
+      "type": "単語",
+      "front": "legislation",
+      "meaning": "法律、法令、立法",
+      "id": "s372"
+    },
+    {
+      "type": "単語",
+      "front": "restoration",
+      "meaning": "修復、復元",
+      "id": "s373"
+    },
+    {
+      "type": "単語",
+      "front": "substitute",
+      "meaning": "代用品、代理人",
+      "id": "s375"
+    },
+    {
+      "type": "単語",
+      "front": "disruption",
+      "meaning": "混乱、遮断",
+      "id": "s376"
+    },
+    {
+      "type": "単語",
+      "front": "confectionery",
+      "meaning": "菓子店、菓子類",
+      "id": "s377"
+    },
+    {
+      "type": "単語",
+      "front": "formally",
+      "meaning": "正式に、公式に",
+      "id": "s378"
+    },
+    {
+      "type": "単語",
+      "front": "stringent",
+      "meaning": "厳格な、厳しい",
+      "id": "s379"
+    },
+    {
+      "type": "単語",
+      "front": "yet",
+      "meaning": "しかし、それでも、～でありながら",
+      "id": "s380"
+    },
+    {
+      "type": "熟語",
+      "front": "be committed to ~ing",
+      "meaning": "～することに尽力している、固く決意している",
+      "id": "s382"
+    },
+    {
+      "type": "熟語",
+      "front": "advertise on a website / in a newspaper",
+      "meaning": "ウェブサイトで／新聞に広告を出す",
+      "id": "s383"
+    },
+    {
+      "type": "単語",
+      "front": "engagement",
+      "meaning": "約束、予定",
+      "id": "s384"
+    },
+    {
+      "type": "単語",
+      "front": "name",
+      "meaning": "名付ける、任命する、名前を挙げる",
+      "id": "s385"
+    },
+    {
+      "type": "単語",
+      "front": "commitment",
+      "meaning": "約束、献身、責任ある取り組み",
+      "id": "s386"
+    },
+    {
+      "type": "熟語",
+      "front": "be in deliberations",
+      "meaning": "審議中である、協議中である",
+      "id": "s388"
+    },
+    {
+      "type": "単語",
+      "front": "throughout",
+      "meaning": "～の間ずっと、～の至る所に",
+      "id": "s391"
+    },
+    {
+      "type": "熟語",
+      "front": "demonstrate respect for ～",
+      "meaning": "～に対して敬意を示す",
+      "id": "s392"
+    },
+    {
+      "type": "単語",
+      "front": "recognition",
+      "meaning": "評価、表彰、認識",
+      "id": "s394"
+    },
+    {
+      "type": "単語",
+      "front": "subordinate",
+      "meaning": "部下、下位の",
+      "id": "s395"
+    },
+    {
+      "type": "単語",
+      "front": "contractor",
+      "meaning": "請負業者、契約業者",
+      "id": "s396"
+    },
+    {
+      "type": "熟語",
+      "front": "provide advice on ～",
+      "meaning": "～について助言する",
+      "id": "s397"
+    },
+    {
+      "type": "熟語",
+      "front": "voice recognition software",
+      "meaning": "音声認識ソフトウェア",
+      "id": "s398"
+    },
+    {
+      "type": "単語",
+      "front": "pinpoint",
+      "meaning": "正確に特定する",
+      "id": "s399"
+    },
+    {
+      "type": "単語",
+      "front": "diagnostic",
+      "meaning": "診断用の",
+      "id": "s400"
+    },
+    {
+      "type": "単語",
+      "front": "patron",
+      "meaning": "利用客、常連客、後援者",
+      "id": "s401"
+    },
+    {
+      "type": "単語",
+      "front": "jeopardize",
+      "meaning": "～を危険にさらす",
+      "id": "s402"
+    },
+    {
+      "type": "単語",
+      "front": "dwindle",
+      "meaning": "徐々に減少する",
+      "id": "s403"
+    },
+    {
+      "type": "単語",
+      "front": "multinational",
+      "meaning": "多国籍の、多国籍企業",
+      "id": "s404"
+    },
+    {
+      "type": "熟語",
+      "front": "oil giant",
+      "meaning": "石油大手企業",
+      "id": "s405"
+    },
+    {
+      "type": "単語",
+      "front": "beyond",
+      "meaning": "～を超えて、～に加えて",
+      "id": "s406"
+    },
+    {
+      "type": "単語",
+      "front": "impending",
+      "meaning": "差し迫った、間近に迫った",
+      "id": "s407"
+    },
+    {
+      "type": "単語",
+      "front": "competitive",
+      "meaning": "競争の、競争力のある",
+      "id": "s408"
+    },
+    {
+      "type": "熟語",
+      "front": "refrain from ~ing",
+      "meaning": "～することを控える",
+      "id": "s409"
+    },
+    {
+      "type": "単語",
+      "front": "converse",
+      "meaning": "会話する",
+      "id": "s410"
+    },
+    {
+      "type": "熟語",
+      "front": "turn to ～",
+      "meaning": "～に目を向ける、～に頼る",
+      "id": "s411"
+    },
+    {
+      "type": "熟語",
+      "front": "as + S + V",
+      "meaning": "SがVするにつれて",
+      "id": "s412"
+    },
+    {
+      "type": "熟語",
+      "front": "as long as + S + V",
+      "meaning": "SがVする限り、～という条件で",
+      "id": "s413"
+    },
+    {
+      "type": "熟語",
+      "front": "submit ～ for approval",
+      "meaning": "承認を得るために～を提出する",
+      "id": "s414"
+    },
+    {
+      "type": "単語",
+      "front": "lecturer",
+      "meaning": "講師、講演者",
+      "id": "s415"
+    },
+    {
+      "type": "単語",
+      "front": "streamline",
+      "meaning": "効率化する、合理化する",
+      "id": "s416"
+    },
+    {
+      "type": "単語",
+      "front": "inquiry",
+      "meaning": "問い合わせ、照会",
+      "id": "s417"
+    },
+    {
+      "type": "単語",
+      "front": "warranty",
+      "meaning": "保証、保証書",
+      "id": "s418"
+    },
+    {
+      "type": "単語",
+      "front": "select",
+      "meaning": "選ぶ、厳選された、特定の",
+      "id": "s419"
+    },
+    {
+      "type": "単語",
+      "front": "thereby",
+      "meaning": "それによって、その結果",
+      "id": "s422"
+    },
+    {
+      "type": "熟語",
+      "front": "draw near",
+      "meaning": "近づく、迫る",
+      "id": "s423"
+    },
+    {
+      "type": "熟語",
+      "front": "at the rate of ～",
+      "meaning": "～の割合で、～の速度で",
+      "id": "s425"
+    },
+    {
+      "type": "熟語",
+      "front": "present a lecture",
+      "meaning": "講演を行う",
+      "id": "s426"
+    },
+    {
+      "type": "単語",
+      "front": "drape",
+      "meaning": "カーテン、覆い布、～を布で覆う",
+      "id": "s427"
+    },
+    {
+      "type": "単語",
+      "front": "correspondingly",
+      "meaning": "それに応じて、それに対応して",
+      "id": "s428"
+    },
+    {
+      "type": "熟語",
+      "front": "have + O + p.p.",
+      "meaning": "Oを～してもらう、Oを～される",
+      "id": "s429"
+    },
+    {
+      "type": "単語",
+      "front": "miscellaneous",
+      "meaning": "雑多な、さまざまな、雑貨",
+      "id": "s430"
+    },
+    {
+      "type": "熟語",
+      "front": "qualify for A",
+      "meaning": "Aの資格を得る、Aに適任である",
+      "id": "s431"
+    },
+    {
+      "type": "単語",
+      "front": "redo",
+      "meaning": "やり直す",
+      "id": "s432"
+    },
+    {
+      "type": "熟語",
+      "front": "be comprised of",
+      "meaning": "～で構成されている",
+      "id": "s433"
+    },
+    {
+      "type": "単語",
+      "front": "culinary",
+      "meaning": "料理の、調理の",
+      "id": "s434"
+    },
+    {
+      "type": "単語",
+      "front": "whole-grain",
+      "meaning": "全粒穀物の、全粒粉の",
+      "id": "s435"
+    },
+    {
+      "type": "熟語",
+      "front": "head over to",
+      "meaning": "～へ向かう",
+      "id": "s436"
+    },
+    {
+      "type": "熟語",
+      "front": "loaner car",
+      "meaning": "代車",
+      "id": "s437"
+    },
+    {
+      "type": "単語",
+      "front": "developer",
+      "meaning": "開発業者、開発者",
+      "id": "s438"
+    },
+    {
+      "type": "熟語",
+      "front": "settle the payment",
+      "meaning": "支払いを済ませる",
+      "id": "s439"
+    },
+    {
+      "type": "熟語",
+      "front": "take down",
+      "meaning": "取り下げる、書き留める",
+      "id": "s440"
+    },
+    {
+      "type": "熟語",
+      "front": "fill out",
+      "meaning": "記入する",
+      "id": "s441"
+    },
+    {
+      "type": "単語",
+      "front": "displeasure",
+      "meaning": "不快感、不満",
+      "id": "s442"
+    },
+    {
+      "type": "熟語",
+      "front": "give away",
+      "meaning": "無料で与える、配る",
+      "id": "s443"
+    },
+    {
+      "type": "単語",
+      "front": "precise",
+      "meaning": "正確な、厳密な",
+      "id": "s444"
+    },
+    {
+      "type": "熟語",
+      "front": "pass on",
+      "meaning": "渡す、伝える",
+      "id": "s445"
+    },
+    {
+      "type": "熟語",
+      "front": "finish off",
+      "meaning": "終える、仕上げる",
+      "id": "s446"
+    },
+    {
+      "type": "単語",
+      "front": "reward",
+      "meaning": "報いる、報酬",
+      "id": "s447"
+    },
+    {
+      "type": "単語",
+      "front": "quarterly",
+      "meaning": "四半期ごとの、四半期に一度",
+      "id": "s448"
+    },
+    {
+      "type": "単語",
+      "front": "defect",
+      "meaning": "欠陥、不具合",
+      "id": "s449"
+    },
+    {
+      "type": "熟語",
+      "front": "mark down",
+      "meaning": "値下げする、書き留める",
+      "id": "s450"
+    },
+    {
+      "type": "単語",
+      "front": "fairly",
+      "meaning": "かなり、公平に",
+      "id": "s451"
+    },
+    {
+      "type": "熟語",
+      "front": "visual aid",
+      "meaning": "視覚教材",
+      "id": "s452"
+    },
+    {
+      "type": "単語",
+      "front": "hire",
+      "meaning": "雇う",
+      "id": "s453"
+    },
+    {
+      "type": "単語",
+      "front": "comprehensive",
+      "meaning": "包括的な、総合的な",
+      "id": "s454"
+    },
+    {
+      "type": "単語",
+      "front": "function",
+      "meaning": "機能、行事・会合",
+      "id": "s455"
+    },
+    {
+      "type": "単語",
+      "front": "imply",
+      "meaning": "暗示する、ほのめかす",
+      "id": "s456"
+    },
+    {
+      "type": "単語",
+      "front": "scuff",
+      "meaning": "擦り傷、擦る",
+      "id": "s457"
+    },
+    {
+      "type": "熟語",
+      "front": "rub off",
+      "meaning": "こすり落とす、（影響が）移る",
+      "id": "s458"
+    },
+    {
+      "type": "単語",
+      "front": "edge",
+      "meaning": "優位性、強み",
+      "id": "s459"
+    },
+    {
+      "type": "熟語",
+      "front": "take care of",
+      "meaning": "～を引き受ける、～に対処する",
+      "id": "s460"
+    },
+    {
+      "type": "単語",
+      "front": "layover",
+      "meaning": "乗り継ぎの待ち時間、途中降機",
+      "id": "s461"
+    },
+    {
+      "type": "単語",
+      "front": "flooding",
+      "meaning": "洪水、浸水",
+      "id": "s462"
+    },
+    {
+      "type": "単語",
+      "front": "exhaust",
+      "meaning": "排気、排気ガス、疲れ果てさせる",
+      "id": "s463"
+    },
+    {
+      "type": "熟語",
+      "front": "temporary agency",
+      "meaning": "派遣会社",
+      "id": "s464"
+    },
+    {
+      "type": "熟語",
+      "front": "in reference to",
+      "meaning": "～に関して",
+      "id": "s465"
+    },
+    {
+      "type": "単語",
+      "front": "diabetes",
+      "meaning": "糖尿病",
+      "id": "s466"
+    },
+    {
+      "type": "単語",
+      "front": "pavilion",
+      "meaning": "展示館、仮設建築物",
+      "id": "s467"
+    },
+    {
+      "type": "単語",
+      "front": "dedication",
+      "meaning": "献身、（建物などの）落成式",
+      "id": "s468"
+    },
+    {
+      "type": "熟語",
+      "front": "take note",
+      "meaning": "注意する、留意する",
+      "id": "s469"
+    },
+    {
+      "type": "単語",
+      "front": "affirm",
+      "meaning": "断言する、確認する、支持する",
+      "id": "s470"
+    },
+    {
+      "type": "熟語",
+      "front": "as per",
+      "meaning": "～に従って、～のとおり",
+      "id": "s471"
+    },
+    {
+      "type": "単語",
+      "front": "means",
+      "meaning": "手段、方法",
+      "id": "s472"
+    },
+    {
+      "type": "熟語",
+      "front": "revel in",
+      "meaning": "～を大いに楽しむ",
+      "id": "s473"
+    },
+    {
+      "type": "単語",
+      "front": "specify",
+      "meaning": "～を明確に述べる、指定する",
+      "id": "s474"
+    },
+    {
+      "type": "熟語",
+      "front": "boast of",
+      "meaning": "～を誇る、自慢する",
+      "id": "s475"
+    },
+    {
+      "type": "単語",
+      "front": "courthouse",
+      "meaning": "裁判所",
+      "id": "s476"
+    },
+    {
+      "type": "単語",
+      "front": "weave",
+      "meaning": "織る、編む",
+      "id": "s477"
+    },
+    {
+      "type": "熟語",
+      "front": "hand out",
+      "meaning": "配布する",
+      "id": "s478"
+    },
+    {
+      "type": "単語",
+      "front": "booklet",
+      "meaning": "小冊子",
+      "id": "s479"
+    },
+    {
+      "type": "単語",
+      "front": "sanctuary",
+      "meaning": "保護区、聖域",
+      "id": "s480"
+    },
+    {
+      "type": "単語",
+      "front": "excerpt",
+      "meaning": "抜粋",
+      "id": "s481"
+    },
+    {
+      "type": "単語",
+      "front": "commemorate",
+      "meaning": "記念する、祝う",
+      "id": "s482"
+    },
+    {
+      "type": "単語",
+      "front": "projection",
+      "meaning": "予測、見積もり",
+      "id": "s483"
+    },
+    {
+      "type": "熟語",
+      "front": "sales figure",
+      "meaning": "売上高、売上高の数値",
+      "id": "s484"
+    },
+    {
+      "type": "単語",
+      "front": "recipient",
+      "meaning": "受取人、受賞者",
+      "id": "s485"
+    },
+    {
+      "type": "熟語",
+      "front": "stand out from",
+      "meaning": "～より目立つ、～より優れている",
+      "id": "s486"
+    },
+    {
+      "type": "単語",
+      "front": "solely",
+      "meaning": "ただ～だけ、単独で",
+      "id": "s487"
+    },
+    {
+      "type": "熟語",
+      "front": "scientific community",
+      "meaning": "科学界",
+      "id": "s488"
+    },
+    {
+      "type": "単語",
+      "front": "sought",
+      "meaning": "seek の過去形・過去分詞（求めた、求められた）",
+      "id": "s489"
+    },
+    {
+      "type": "熟語",
+      "front": "from then on",
+      "meaning": "それ以後、それからずっと",
+      "id": "s490"
+    },
+    {
+      "type": "単語",
+      "front": "cease",
+      "meaning": "やめる、終わる",
+      "id": "s491"
+    },
+    {
+      "type": "単語",
+      "front": "devotion",
+      "meaning": "献身、専念",
+      "id": "s492"
+    },
+    {
+      "type": "熟語",
+      "front": "along the way",
+      "meaning": "途中で、その過程で",
+      "id": "s493"
+    },
+    {
+      "type": "単語",
+      "front": "applaud",
+      "meaning": "拍手する、称賛する",
+      "id": "s494"
+    },
+    {
+      "type": "単語",
+      "front": "formulate",
+      "meaning": "策定する、明確にまとめる",
+      "id": "s495"
+    },
+    {
+      "type": "熟語",
+      "front": "for the time being",
+      "meaning": "当面の間",
+      "id": "s496"
+    },
+    {
+      "type": "単語",
+      "front": "handout",
+      "meaning": "配布資料、プリント",
+      "id": "s497"
+    },
+    {
+      "type": "熟語",
+      "front": "go through",
+      "meaning": "検討する、経験する",
+      "id": "s498"
+    },
+    {
+      "type": "単語",
+      "front": "interact",
+      "meaning": "交流する、相互に作用する",
+      "id": "s499"
+    },
+    {
+      "type": "熟語",
+      "front": "lag behind",
+      "meaning": "遅れを取る",
+      "id": "s500"
+    },
+    {
+      "type": "単語",
+      "front": "tutoring",
+      "meaning": "個別指導",
+      "id": "s501"
+    },
+    {
+      "type": "熟語",
+      "front": "on leave",
+      "meaning": "休暇中で",
+      "id": "s502"
+    },
+    {
+      "type": "単語",
+      "front": "avid",
+      "meaning": "熱心な",
+      "id": "s503"
+    },
+    {
+      "type": "単語",
+      "front": "memorabilia",
+      "meaning": "思い出の品、記念品",
+      "id": "s504"
+    },
+    {
+      "type": "単語",
+      "front": "monetary",
+      "meaning": "金銭的な",
+      "id": "s505"
+    },
+    {
+      "type": "単語",
+      "front": "playbook",
+      "meaning": "手引書、作戦集",
+      "id": "s506"
+    },
+    {
+      "type": "単語",
+      "front": "mint",
+      "meaning": "新品同様の、完璧な状態の",
+      "id": "s507"
+    },
+    {
+      "type": "単語",
+      "front": "pest",
+      "meaning": "害虫",
+      "id": "s508"
+    },
+    {
+      "type": "熟語",
+      "front": "state a complaint",
+      "meaning": "苦情を述べる",
+      "id": "s509"
+    },
+    {
+      "type": "熟語",
+      "front": "throw out",
+      "meaning": "捨てる",
+      "id": "s510"
+    },
+    {
+      "type": "単語",
+      "front": "directory",
+      "meaning": "建物案内板、名簿",
+      "id": "s511"
+    },
+    {
+      "type": "熟語",
+      "front": "at all costs",
+      "meaning": "何としても",
+      "id": "s512"
+    },
+    {
+      "type": "単語",
+      "front": "hygiene",
+      "meaning": "衛生",
+      "id": "s513"
+    },
+    {
+      "type": "単語",
+      "front": "halt",
+      "meaning": "止める",
+      "id": "s514"
+    },
+    {
+      "type": "熟語",
+      "front": "landline phone",
+      "meaning": "固定電話",
+      "id": "s515"
+    },
+    {
+      "type": "単語",
+      "front": "aforementioned",
+      "meaning": "前述の",
+      "id": "s516"
+    },
+    {
+      "type": "熟語",
+      "front": "rest assured",
+      "meaning": "安心する",
+      "id": "s517"
+    },
+    {
+      "type": "単語",
+      "front": "placement",
+      "meaning": "職業紹介",
+      "id": "s518"
+    },
+    {
+      "type": "単語",
+      "front": "turmoil",
+      "meaning": "騒動",
+      "id": "s519"
+    },
+    {
+      "type": "単語",
+      "front": "narrative",
+      "meaning": "話、物語",
+      "id": "s520"
+    },
+    {
+      "type": "単語",
+      "front": "blackout",
+      "meaning": "停電",
+      "id": "s521"
+    },
+    {
+      "type": "単語",
+      "front": "outage",
+      "meaning": "供給停止",
+      "id": "s522"
+    },
+    {
+      "type": "単語",
+      "front": "surge",
+      "meaning": "急増",
+      "id": "s523"
+    },
+    {
+      "type": "単語",
+      "front": "scaffolding",
+      "meaning": "足場",
+      "id": "s524"
+    },
+    {
+      "type": "単語",
+      "front": "skyline",
+      "meaning": "都市の輪郭",
+      "id": "s525"
+    },
+    {
+      "type": "単語",
+      "front": "lawn",
+      "meaning": "芝生",
+      "id": "s526"
+    },
+    {
+      "type": "熟語",
+      "front": "lawn mower",
+      "meaning": "芝刈り機",
+      "id": "s527"
+    },
+    {
+      "type": "単語",
+      "front": "hallway",
+      "meaning": "廊下",
+      "id": "s528"
+    },
+    {
+      "type": "単語",
+      "front": "driveway",
+      "meaning": "私道、車道",
+      "id": "s529"
+    },
+    {
+      "type": "単語",
+      "front": "utensil",
+      "meaning": "調理器具",
+      "id": "s530"
+    },
+    {
+      "type": "単語",
+      "front": "specification",
+      "meaning": "詳細、仕様書",
+      "id": "s531"
+    },
+    {
+      "type": "単語",
+      "front": "transfer",
+      "meaning": "異動する",
+      "id": "s532"
+    },
+    {
+      "type": "熟語",
+      "front": "bus depot",
+      "meaning": "バスターミナル",
+      "id": "s533"
+    },
+    {
+      "type": "単語",
+      "front": "motorcycle",
+      "meaning": "バイク",
+      "id": "s534"
+    },
+    {
+      "type": "熟語",
+      "front": "at a later date",
+      "meaning": "後日",
+      "id": "s535"
+    },
+    {
+      "type": "熟語",
+      "front": "hire a service",
+      "meaning": "業務を委託する",
+      "id": "s536"
+    },
+    {
+      "type": "熟語",
+      "front": "address an invitation",
+      "meaning": "招待状の宛名を書く",
+      "id": "s537"
+    },
+    {
+      "type": "熟語",
+      "front": "That's not necessarily the case.",
+      "meaning": "そうとは限りません。",
+      "id": "s538"
+    },
+    {
+      "type": "単語",
+      "front": "renowned",
+      "meaning": "名高い",
+      "id": "s539"
+    },
+    {
+      "type": "熟語",
+      "front": "civil engineering",
+      "meaning": "土木工学",
+      "id": "s540"
+    },
+    {
+      "type": "単語",
+      "front": "art",
+      "meaning": "技術、技",
+      "id": "s541"
+    },
+    {
+      "type": "熟語",
+      "front": "in action",
+      "meaning": "活動中の",
+      "id": "s542"
+    },
+    {
+      "type": "熟語",
+      "front": "state-of-the-art",
+      "meaning": "最新の",
+      "id": "s543"
+    },
+    {
+      "type": "単語",
+      "front": "faculty",
+      "meaning": "教授陣",
+      "id": "s544"
+    },
+    {
+      "type": "単語",
+      "front": "cause",
+      "meaning": "主義、大義",
+      "id": "s545"
+    },
+    {
+      "type": "単語",
+      "front": "festivity",
+      "meaning": "祝い事",
+      "id": "s546"
+    },
+    {
+      "type": "単語",
+      "front": "weaver",
+      "meaning": "機織り職人",
+      "id": "s547"
+    },
+    {
+      "type": "単語",
+      "front": "range",
+      "meaning": "範囲",
+      "id": "s548"
+    }
+  ]
+}
