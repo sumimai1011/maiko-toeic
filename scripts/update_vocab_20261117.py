@@ -35,3 +35,45 @@ assert updated.count("const BASE=") == 1
 if added:
     path.write_text(updated, encoding="utf-8")
 print(f"Added {added} of {len(NEW)} photographed entries; total {len(cards)} cards.")
+
+
+# Export only vocabulary text so the user's locally saved cards can be reviewed
+# without transferring illustrations or study progress.
+html = path.read_text(encoding="utf-8")
+menu_anchor = '  <button id="showPoints" class="m3">POINT</button>'
+export_button = '  <button id="exportCards" class="m3" type="button">全カードを書き出す</button>'
+export_js = r'''
+document.getElementById("exportCards").onclick = () => {
+  const cards = studyDeck().map(x => ({
+    type: x.type,
+    front: x.front,
+    meaning: x.meaning,
+    id: x.id
+  }));
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    total: cards.length,
+    cards: cards
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "TOEIC全カード一覧.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+};
+'''
+if 'id="exportCards"' not in html:
+    assert html.count(menu_anchor) == 1, "Cannot locate card menu"
+    html = html.replace(menu_anchor, menu_anchor + "\n" + export_button)
+    assert html.count("\n</script>\n</body>") == 1
+    html = html.replace("\n</script>\n</body>", "\n" + export_js + "\n</script>\n</body>")
+    assert html.rstrip().endswith("</html>")
+    assert html.count('id="exportCards"') == 1
+    path.write_text(html, encoding="utf-8")
+    print("Added browser-only full-deck vocabulary export button.")
+else:
+    print("Export button already present; no changes.")
