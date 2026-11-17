@@ -5,7 +5,7 @@ on:
     paths:
       - 'scripts/update_vocab_20261117.py'
       - '.github/workflows/update-vocab-20261117.yml'
-      - 'scripts/consolidate_402.py'
+      - 'scripts/fix_571_duplicate.py'
   workflow_dispatch:
 
 permissions:
@@ -20,8 +20,8 @@ jobs:
           persist-credentials: true
       - name: Add vocabulary without replacing existing entries
         run: python3 scripts/update_vocab_20261117.py
-      - name: Consolidate full 402-card deck and simplify interface
-        run: python3 scripts/consolidate_402.py
+      - name: Repair accidental duplicate cards and verify final count
+        run: python3 scripts/fix_571_duplicate.py
       - name: Commit updated index.html
         run: |
           if git diff --quiet -- index.html; then
@@ -31,5 +31,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Unify 402 TOEIC cards and remove edit delete export UI"
+          git commit -m "Repair duplicate 169 cards and restore verified 402-card deck"
           git push
