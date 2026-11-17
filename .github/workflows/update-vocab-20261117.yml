@@ -3,7 +3,6 @@ name: Update photographed TOEIC vocabulary
 on:
   push:
     paths:
-      - 'scripts/update_vocab_20261117.py'
       - '.github/workflows/update-vocab-20261117.yml'
       - 'scripts/fix_571_duplicate.py'
   workflow_dispatch:
@@ -18,8 +17,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Add vocabulary without replacing existing entries
-        run: python3 scripts/update_vocab_20261117.py
       - name: Repair accidental duplicate cards and verify final count
         run: python3 scripts/fix_571_duplicate.py
       - name: Commit updated index.html
