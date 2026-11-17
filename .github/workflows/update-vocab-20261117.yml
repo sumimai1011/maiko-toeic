@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/update_vocab_20261117.py'
       - '.github/workflows/update-vocab-20261117.yml'
+      - 'scripts/card_editor_20261117.py'
   workflow_dispatch:
 
 permissions:
@@ -19,6 +20,8 @@ jobs:
           persist-credentials: true
       - name: Add vocabulary without replacing existing entries
         run: python3 scripts/update_vocab_20261117.py
+      - name: Add reversible card editing and approved meaning revisions
+        run: python3 scripts/card_editor_20261117.py
       - name: Commit updated index.html
         run: |
           if git diff --quiet -- index.html; then
@@ -28,5 +31,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Update TOEIC app with Nov 17 photographed vocabulary"
+          git commit -m "Add TOEIC card editor and approved meaning revisions"
           git push
