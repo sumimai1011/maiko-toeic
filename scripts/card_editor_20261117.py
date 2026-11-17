@@ -29,7 +29,7 @@ approved=[
 replaced=[]
 for c in cards:
  for front,old,new in approved:
-  if c.get("front")==front and c.get("meaning")==old:
+  if c.get("front")==front and (c.get("meaning")==old or (front=="since" and c.get("meaning")=="それ以来")):
    c["meaning"]=new
    replaced.append(front)
 assert sorted(replaced)==sorted(["since","dedication","object"]), replaced
