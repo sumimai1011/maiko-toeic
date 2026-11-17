@@ -537,6 +537,7 @@ button{min-height:48px;-webkit-tap-highlight-color:transparent}
 <div class="menu">
   <button id="showAll" class="m1">カード一覧</button>
   <button id="showPoints" class="m3">POINT</button>
+  <button id="exportCards" class="m3" type="button">全カードを書き出す</button>
 </div>
 <section id="panel" class="panel">
   <div class="head"><h2 id="panelTitle">カード一覧</h2><div class="small" id="panelCount"></div></div>
@@ -1199,6 +1200,30 @@ $("saveBtn").onclick=()=>{
   $("newFront").value="";$("newMeaning").value="";$("modal").classList.remove("on");renderHome();
 };
 renderHome();
+
+document.getElementById("exportCards").onclick = () => {
+  const cards = studyDeck().map(x => ({
+    type: x.type,
+    front: x.front,
+    meaning: x.meaning,
+    id: x.id
+  }));
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    total: cards.length,
+    cards: cards
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "TOEIC全カード一覧.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+};
+
 </script>
 </body>
 </html>
