@@ -726,12 +726,12 @@ function studyDeck(){return deck().filter(x=>x.type!=="POINT")}
 function pointDeck(){return deck().filter(x=>x.type==="POINT")}
 function due(){return studyDeck().filter(x=>!x.next||x.next<=ymd(0))}
 
-// At least 30 cards a day (roughly 15 minutes at 30 seconds/card).
+// At least 80 cards a day; review-due cards remain highest priority.
 // Always prioritize due reviews, then fill from not-yet-due cards.
 // Supplemental practice never erases existing progress or reschedules
 // any card unless the learner explicitly scores it.
-const DAILY_TARGET=30;
-const DAILY_DONE_KEY="toeic_daily30_completed_v1";
+const DAILY_TARGET=80;
+const DAILY_DONE_KEY="toeic_daily80_completed_v1";
 let isDailySession=false;
 function dailyCompleted(){
   try{return localStorage.getItem(DAILY_DONE_KEY)===ymd(0)}catch(e){return false}
@@ -773,7 +773,7 @@ function renderHome(){
   $("registered").textContent=d.length;
   $("dueCount").textContent=todayCards.length;
   $("start").disabled=todayCards.length===0;
-  $("start").textContent=todayCards.length?"学習スタート（"+todayCards.length+"枚・約15分〜）":"今日の学習完了 🎉";
+  $("start").textContent=todayCards.length?"学習スタート（"+todayCards.length+"枚）":"今日の学習完了 🎉";
   if($("panel").classList.contains("on")) renderList();
 }
 function renderList(){
