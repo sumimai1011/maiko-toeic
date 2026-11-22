@@ -725,6 +725,41 @@ function saveUsers(){try{localStorage.setItem(UKEY,JSON.stringify(userCards))}ca
 function studyDeck(){return deck().filter(x=>x.type!=="POINT")}
 function pointDeck(){return deck().filter(x=>x.type==="POINT")}
 function due(){return studyDeck().filter(x=>!x.next||x.next<=ymd(0))}
+
+// At least 30 cards a day (roughly 15 minutes at 30 seconds/card).
+// Always prioritize due reviews, then fill from not-yet-due cards.
+// Supplemental practice never erases existing progress or reschedules
+// any card unless the learner explicitly scores it.
+const DAILY_TARGET=30;
+const DAILY_DONE_KEY="toeic_daily30_completed_v1";
+let isDailySession=false;
+function dailyCompleted(){
+  try{return localStorage.getItem(DAILY_DONE_KEY)===ymd(0)}catch(e){return false}
+}
+function completeDailySession(){
+  try{localStorage.setItem(DAILY_DONE_KEY,ymd(0))}catch(e){}
+}
+function dailyQueue(){
+  const scheduled=due().sort((a,b)=>(a.next||"").localeCompare(b.next||""));
+  if(dailyCompleted())return scheduled;
+  const needed=Math.max(0,DAILY_TARGET-scheduled.length);
+  if(!needed)return scheduled;
+  const selected=new Set(scheduled.map(x=>x.id));
+  // Less-mastered vocabulary and nearer review dates are introduced first.
+  // Stable daily rotation prevents the same few cards always being selected.
+  const day=ymd(0).split("-").join("");
+  const offset=Number(day)%1009;
+  const supplemental=studyDeck().filter(x=>!selected.has(x.id))
+   .sort((a,b)=>{
+     const av=Number.isFinite(a.level)?a.level:0,bv=Number.isFinite(b.level)?b.level:0;
+     if(av!==bv)return av-bv;
+     const an=a.next||"",bn=b.next||"";
+     if(an!==bn)return an.localeCompare(bn);
+     const hash=x=>[...String(x.id)].reduce((h,c)=>(h*31+c.charCodeAt(0))%1000003,offset);
+     return hash(a)-hash(b);
+   }).slice(0,needed);
+  return scheduled.concat(supplemental);
+}
 function esc(s=""){return String(s).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch]))}
 
 let listMode="all";
@@ -733,12 +768,12 @@ let index=0;
 let repeatedThisSession=new Set();
 
 function renderHome(){
-  const d=studyDeck(), dueN=due().length;
+  const d=studyDeck(), dueN=due().length, todayCards=dailyQueue();
   $("dateLabel").textContent=new Intl.DateTimeFormat("ja-JP",{month:"numeric",day:"numeric",weekday:"short"}).format(new Date());
   $("registered").textContent=d.length;
-  $("dueCount").textContent=dueN;
-  $("start").disabled=dueN===0;
-  $("start").textContent=dueN?"学習スタート":"今日は復習なし 🎉";
+  $("dueCount").textContent=todayCards.length;
+  $("start").disabled=todayCards.length===0;
+  $("start").textContent=todayCards.length?"学習スタート（"+todayCards.length+"枚・約15分〜）":"今日の学習完了 🎉";
   if($("panel").classList.contains("on")) renderList();
 }
 function renderList(){
@@ -750,7 +785,7 @@ function renderList(){
     const adjNote=["costly","lively","timely"].includes(x.front.toLowerCase()) ? "　※形容詞（副詞ではない）" : "";
     return `<div class="row" data-id="${x.id}"><div class="rt"><div class="word">${esc(x.front)}</div><div class="meaning">${esc(x.meaning)}${adjNote}</div></div></div>`;
   }).join("");
-  document.querySelectorAll(".row").forEach(r=>r.onclick=()=>{const x=studyDeck().find(z=>z.id===r.dataset.id);startStudy([x])});
+  document.querySelectorAll(".row").forEach(r=>r.onclick=()=>{const x=studyDeck().find(z=>z.id===r.dataset.id);(isDailySession=false,startStudy([x]))});
 }
 
 const POINT_TOPICS=[{"id":"point-onepage","title":"POINT総まとめ","subtitle":"","html":"<div class=\"pointSection\"><h3>① 品詞</h3><div class=\"pointRows\"><div class=\"pointRow2\"><div class=\"label\">名詞</div><div class=\"value\">主語・目的語・補語</div></div><div class=\"pointRow2\"><div class=\"label\">形容詞</div><div class=\"value\">名詞を修飾</div></div><div class=\"pointRow2\"><div class=\"label\">副詞</div><div class=\"value\">動詞・形容詞・副詞・文全体を修飾</div></div><div class=\"pointRow2\"><div class=\"label\">前置詞</div><div class=\"value\">＋ 名詞 / 動名詞</div></div><div class=\"pointRow2\"><div class=\"label\">接続詞</div><div class=\"value\">＋ S + V</div></div><div class=\"pointRow2\"><div class=\"label\">名詞 / 動詞の同形語</div><div class=\"value\">increase / decrease / estimate / forecast / recruit / respect / order</div></div></div></div><div class=\"pointSection\"><h3>② 前置詞・接続詞・接続副詞</h3><div class=\"pointRows\"><div class=\"pointRow2\"><div class=\"label\">前置詞 ＋ 名詞</div><div class=\"value\">rather than / aside from / despite / in spite of / in the event of</div></div><div class=\"pointRow2\"><div class=\"label\">接続詞 ＋ S＋V</div><div class=\"value\">because / since / when / while / as / as long as / in the event that</div></div><div class=\"pointRow2\"><div class=\"label\">接続副詞</div><div class=\"value\">therefore / thus / consequently / nevertheless / meanwhile / namely</div></div><div class=\"pointRow2\"><div class=\"label\">副詞 thereby</div><div class=\"value\">それによって</div></div></div></div><div class=\"pointSection\"><h3>③ 動詞の形</h3><div class=\"pointRows\"><div class=\"pointRow2\"><div class=\"label\">使役</div><div class=\"value\">make / have / let ＋ 人 ＋ 原形</div></div><div class=\"pointRow2\"><div class=\"label\">help</div><div class=\"value\">help ＋ 人 ＋ (to) 原形</div></div><div class=\"pointRow2\"><div class=\"label\">have</div><div class=\"value\">have ＋ 物 ＋ 過去分詞</div></div><div class=\"pointRow2\"><div class=\"label\">未来の予定</div><div class=\"value\">be ＋ -ing</div></div></div></div><div class=\"pointSection\"><h3>④ 頻出ルール</h3><div class=\"pointRows\"><div class=\"pointRow2\"><div class=\"label\">省略</div><div class=\"value\">when / if 等の後で S＋be を省略できる場合あり</div></div><div class=\"pointRow2\"><div class=\"label\">倒置</div><div class=\"value\">nor ＋ 助動詞 ＋ 主語</div></div><div class=\"pointRow2\"><div class=\"label\">提案・要求のthat節</div><div class=\"value\">suggest / propose / require / demand ＋ that ＋ S ＋ 原形</div></div><div class=\"pointRow2\"><div class=\"label\">時・条件の副詞節</div><div class=\"value\">未来のことでも when / if の後は現在形</div></div></div></div><div class=\"pointSection\"><h3>⑤ 代名詞・可算 / 不可算</h3><div class=\"pointRows\"><div class=\"pointRow2\"><div class=\"label\">可算単数</div><div class=\"value\">each / every / either / neither / another</div></div><div class=\"pointRow2\"><div class=\"label\">可算複数</div><div class=\"value\">many / few / a few / several / both</div></div><div class=\"pointRow2\"><div class=\"label\">不可算</div><div class=\"value\">much / little / a little</div></div><div class=\"pointRow2\"><div class=\"label\">両方</div><div class=\"value\">all / most / some / any / enough</div></div><div class=\"pointRow2\"><div class=\"label\">ほとんどない</div><div class=\"value\">few（可算）/ little（不可算）</div></div><div class=\"pointRow2\"><div class=\"label\">少しある</div><div class=\"value\">a few（可算）/ a little（不可算）</div></div><div class=\"pointRow2\"><div class=\"label\">代名詞・単数扱い</div><div class=\"value\">someone / anyone / everyone / nobody / each / either / neither</div></div><div class=\"pointRow2\"><div class=\"label\">代名詞・複数扱い</div><div class=\"value\">both / many / few / several / others</div></div><div class=\"pointRow2\"><div class=\"label\">代名詞・文脈による</div><div class=\"value\">all / most / some / any / none</div></div><div class=\"pointRow2\"><div class=\"label\">the other</div><div class=\"value\">単数・複数の両方で使える</div></div></div></div><div class=\"pointSection\"><h3>⑥ 間違えやすいセット</h3><div class=\"pointRows\"><div class=\"pointRow2\"><div class=\"label\">until / by</div><div class=\"value\">～までずっと / ～までに（期限）</div></div><div class=\"pointRow2\"><div class=\"label\">自動詞 / 他動詞</div><div class=\"value\">go to / arrive at  ↔  discuss / attend</div></div><div class=\"pointRow2\"><div class=\"label\">as / as long as</div><div class=\"value\">～につれて / ～する限り</div></div><div class=\"pointRow2\"><div class=\"label\">be＋ing / will</div><div class=\"value\">決まった予定 / 意思・予測</div></div></div></div>"}];
@@ -844,6 +879,7 @@ function showCard(){
 function finishOrNext(){
   index++;
   if(index>=queue.length){
+    if(isDailySession){completeDailySession();isDailySession=false;}
     $("study").classList.remove("on");
     $("home").classList.remove("off");
     renderHome();
@@ -858,8 +894,12 @@ function requeueOnce(card, distance=5){
   queue.splice(pos,0,card);
 }
 
-$("start").onclick=()=>startStudy(due().sort(()=>Math.random()-.5));
-$("back").onclick=()=>{$("study").classList.remove("on");$("home").classList.remove("off");renderHome()};
+$("start").onclick=()=>{
+  isDailySession=true;
+  const cards=dailyQueue();
+  if(cards.length)startStudy(cards);
+};
+$("back").onclick=()=>{isDailySession=false;$("study").classList.remove("on");$("home").classList.remove("off");renderHome()};
 $("card").onclick=(e)=>{
   if(e.target.closest("[data-score]")) return;
   if(!$("card").classList.contains("reveal")){
