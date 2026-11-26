@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/update-vocab-20261117.yml'
-      - 'scripts/inspect_extra_study_20261126.py'
+      - 'scripts/add_optional_extra_study_20261126.py'
   workflow_dispatch:
 
 permissions:
@@ -17,8 +17,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Inspect app review and daily practice logic
-        run: python3 scripts/inspect_extra_study_20261126.py
+      - name: Add optional extra card review and verify 272 cards
+        run: python3 scripts/add_optional_extra_study_20261126.py
       - name: Commit updated index.html
         run: |
           if git diff --quiet -- index.html; then
@@ -28,5 +28,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Clean up learned TOEIC cards, merge duplicates and fill examples"
+          git commit -m "Add optional 10, 20, 30, 50-card practice after daily 80"
           git push
