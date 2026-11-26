@@ -12,7 +12,7 @@ base,_=json.JSONDecoder().raw_decode(s[p0:])
 a=s.index("BASE.push(")+len("BASE.push(")
 b=s.index("\n);",a)
 extra=json.loads("["+s[a:b].strip().strip(",")+"]")
-assert (len(base),len(extra))==(150,122),(len(base),len(extra))
+assert (len(base),len(extra))==(166,106),(len(base),len(extra))
 assert "const DAILY_TARGET=80;" in s
 assert "point-onepage" in s and "preserveMergedCardProgress" in s
 assert s.count('id="start"')==1
