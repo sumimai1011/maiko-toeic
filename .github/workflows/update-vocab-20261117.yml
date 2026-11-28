@@ -3,7 +3,6 @@ on:
   push:
     paths:
       - '.github/workflows/update-vocab-20261117.yml'
-      - 'scripts/add_evening_notes_20261126.py'
   workflow_dispatch:
 permissions:
   contents: write
@@ -15,7 +14,7 @@ jobs:
         with:
           persist-credentials: true
       - name: Add approved cards and check duplicates
-        run: python3 scripts/add_evening_notes_20261126.py
+        run: python3 scripts/add_notes_20261128.py
       - name: Commit updated index.html
         run: |
           if git diff --quiet -- index.html; then
@@ -25,5 +24,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Add approved evening vocabulary and consolidate duplicates"
+          git commit -m "Add approved November 28 vocabulary and consolidate duplicates"
           git push
